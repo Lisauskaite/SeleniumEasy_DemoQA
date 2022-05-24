@@ -1,3 +1,5 @@
+package tests.seleniumEasy;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.Driver;
 
 import java.time.Duration;
 
@@ -19,8 +22,9 @@ public class TestSelenium3 {
         int inputB = 64;
         int expectedResult = 72;
 
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = Driver.getDriver();
+        //WebDriverManager.chromedriver
+        //WebDriver driver = new ChromeDriver();
         driver.get("https://demo.seleniumeasy.com/basic-first-form-demo.html");
 
 
