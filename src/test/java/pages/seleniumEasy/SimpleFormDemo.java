@@ -4,54 +4,47 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.Common;
+import pages.Locators;
 import utilities.Driver;
 
 import java.time.Duration;
 
 public class SimpleFormDemo {
 
-    //metodas atidaryti konkretu puslapi
     public static void open() {
         Common.openUrl("https://demo.seleniumeasy.com/basic-first-form-demo.html");
     }
 
-    //metodas uzdaryti reklama
-    public static void clodeAdd() {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='at-cv-lightbox-close']")));
-        Common.clickElement(By.xpath("//*[@id='at-cv-lightbox-close']"));
+    public static void closeAd() {
+        Common.waitForElementToBeVisible(Locators.SeleniumEasy.SimpleFormDemo.frameAd);
+        Common.clickElement(Locators.SeleniumEasy.SimpleFormDemo.buttonCloseAd);
     }
 
-    //metodas irasyti teksta i laukeli
     public static void enterMessage(String message) {
-        By locator = By.xpath("//*[@id='user-message']");   // locatorius
-        Common.sendKeysToElement(locator, message);
+        Common.sendKeysToElement(Locators.SeleniumEasy.SimpleFormDemo.inputMessage, message);
     }
 
     public static void clickShowMessageButton() {
-        By locator = By.xpath("//*[@id='get-input']//button");
-        Common.clickElement(locator);
+        Common.clickElement(Locators.SeleniumEasy.SimpleFormDemo.buttonShowMessage);
     }
+
     public static String readMessage() {
-        By locator = By.xpath("//*[@id='display']");
-        Common.getElement(locator);
-        return readMessage();
+        return Common.getElementText(Locators.SeleniumEasy.SimpleFormDemo.fieldMessage);
     }
+
     public static void enterValueA(String value) {
-        By locator = By.xpath("//*[@id='sum1']");
-        Common.sendKeysToElement(locator, value);
+        Common.sendKeysToElement(Locators.SeleniumEasy.SimpleFormDemo.inputValueA, value);
     }
+
     public static void enterValueB(String value) {
-        By locator = By.xpath("//*[@id='sum2']");
-        Common.sendKeysToElement(locator, value);
+        Common.sendKeysToElement(Locators.SeleniumEasy.SimpleFormDemo.inputValueB, value);
     }
-    public static void clickGetTotal() {
-        By locator = By.xpath("//*[@id='gettotal']//button");
-        Common.clickElement(locator);
+
+    public static void clickGetTotalButton() {
+        Common.clickElement(Locators.SeleniumEasy.SimpleFormDemo.buttonGetTotal);
     }
+
     public static String readTotal() {
-        By locator = By.xpath("//*[@id='displayvalue']");
-        Common.getElement(locator);
-        return readTotal();
+        return Common.getElementText(Locators.SeleniumEasy.SimpleFormDemo.fieldTotal);
     }
-    }
+}
